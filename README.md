@@ -8,7 +8,11 @@ local/default: cyan
 dev: pink
 prod: green
 
-Add the following to .profile or .bashrc
+1. Place this .prompt directory into your home directory.
+
+    $ git clone git@github.com:puckbag/.prompt.git ~/.prompt
+
+2. Add the following to .profile or .bashrc
 
     # colored prompt w/ git support
     if [ -f ~/.prompt/profile ]; then

@@ -6,7 +6,7 @@ if [ -n "$BASH_VERSION" ]; then
         . ~/.prompt/colors.bash
     fi
 
-    if [ hash git 2>/dev/null ]; then
+    if [ `type -t git` ]; then
         if [ -f ~/.prompt/git-completion.bash ]; then
             . ~/.prompt/git-completion.bash
         fi
@@ -39,6 +39,7 @@ if [ -n "$BASH_VERSION" ]; then
 
     function colored_prompt
     {
+        # local gitps1=$( [ `type -t __git_ps1` ] && echo '$(__git_ps1 " (%s)")' || echo '' )
         local gitps1=$( [ `type -t __git_ps1` ] && echo '$(__git_ps1 " (%s)")' || echo '' )
         local user="$PROMPT_PS1_USER_COLOR\u@\h"
         local location="$COLOR_IBLUE\w"

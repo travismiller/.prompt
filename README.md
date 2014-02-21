@@ -9,10 +9,21 @@ dev: pink
 prod: green  
 
 
+Installer Setup
+---------------
+
+```
+$ curl -sS https://raw.github.com/puckbag/.prompt/master/install.sh | sh
+```
+
+Manual Setup
+------------
+
 Place this .prompt directory into your home directory.
 
-    $ git clone https://github.com/puckbag/.prompt.git ~/.prompt
-
+```
+$ git clone https://github.com/puckbag/.prompt.git ~/.prompt
+```
 
 Add the following to .profile or .bashrc
 

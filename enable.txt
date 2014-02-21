@@ -1,0 +1,7 @@
+
+# colored prompt w/ git support
+if [ -f ~/.prompt/profile ]; then
+    PROMPT_TYPE="local"
+    . ~/.prompt/profile
+fi
+

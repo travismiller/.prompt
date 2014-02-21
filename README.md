@@ -11,7 +11,7 @@ prod: green
 
 Place this .prompt directory into your home directory.
 
-    $ git clone git@github.com:puckbag/.prompt.git ~/.prompt
+    $ git clone https://github.com/puckbag/.prompt.git ~/.prompt
 
 
 Add the following to .profile or .bashrc

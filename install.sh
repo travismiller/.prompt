@@ -15,7 +15,7 @@ if [ ! -d ~/.prompt ]; then
 	else
 		curl -sS https://github.com/puckbag/.prompt/archive/master.zip > ~/.prompt.zip
 		cd ~
-		unzip ~/.prompt.zip
+		unzip ~/.prompt
 		rm ~/.prompt.zip
 	fi
 fi

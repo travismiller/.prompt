@@ -17,6 +17,7 @@ if [ ! -d ~/.prompt ]; then
 		cd ~
 		unzip ~/.prompt
 		rm ~/.prompt.zip
+		mv ~/.prompt-master ~/.prompt
 	fi
 fi
 

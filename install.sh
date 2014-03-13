@@ -13,7 +13,7 @@ if [ ! -d ~/.prompt ]; then
 			git clone https://github.com/puckbag/.prompt.git ~/.prompt
 		fi
 	else
-		curl -sS https://github.com/puckbag/.prompt/archive/master.zip > ~/.prompt.zip
+		curl -sSL https://github.com/puckbag/.prompt/archive/master.zip > ~/.prompt.zip
 		cd ~
 		unzip ~/.prompt
 		rm ~/.prompt.zip

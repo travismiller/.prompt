@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-if [ -n "$BASH_VERSION" ]; then
+if [ ! -n "$DOT_PROMPT" ] && [ -n "$BASH_VERSION" ]; then
+
+    export DOT_PROMPT=1
 
     if [ -f ~/.prompt/colors.bash ]; then
         . ~/.prompt/colors.bash
@@ -16,16 +18,15 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 
     # local, dev, prod
-    #PROMPT_TYPE="local"
-    case "$PROMPT_TYPE" in
-        "prod") 
+    case "$DOT_PROMPT_TYPE" in
+        "prod")
             PROMPT_PS1_HOST_COLOR=$COLOR_IGREEN
         ;;
-        "dev") 
+        "dev")
             PROMPT_PS1_HOST_COLOR=$COLOR_IPURPLE
         ;;
-        # "local") 
-        *) 
+        # "local")
+        *)
             PROMPT_PS1_HOST_COLOR=$COLOR_ICYAN
         ;;
     esac

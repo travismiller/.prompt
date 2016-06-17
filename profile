@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DOT_PROMPT_TYPE="$1"
+
 if [ ! -n "$DOT_PROMPT" ] && [ -n "$BASH_VERSION" ]; then
 
     export DOT_PROMPT=1

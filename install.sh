@@ -19,10 +19,14 @@ if [ ! -d ~/.prompt ]; then
 	fi
 fi
 
-if ! grep -q '~/.prompt/profile' ~/.bash_profile 2> /dev/null; then
-	echo 'Setting DOT_PROMPT_TYPE in ~/.bash_profile…'
-	cat ~/.prompt/enable.txt | sed "s/ 'local' / '$PROMPT_COLOR' /" >> ~/.bash_profile
-elif ! grep -q '~/.prompt/profile' ~/.profile 2> /dev/null; then
-	echo 'Setting DOT_PROMPT_TYPE in ~/.profile…'
-	cat ~/.prompt/enable.txt | sed "s/ 'local' / '$PROMPT_COLOR' /" >> ~/.profile
+if [[ -f ~/.profile && ! -f ~/.bash_profile ]]; then
+	if ! grep -q '~/.prompt/profile' ~/.profile 2> /dev/null; then
+		echo 'Setting DOT_PROMPT_TYPE in ~/.profile…'
+		cat ~/.prompt/enable.txt | sed "s/ 'local' / '$PROMPT_COLOR' /" >> ~/.profile
+	fi
+else
+	if ! grep -Fq '~/.prompt/profile' ~/.bash_profile 2> /dev/null; then
+		echo 'Setting DOT_PROMPT_TYPE in ~/.bash_profile…'
+		cat ~/.prompt/enable.txt | sed "s/ 'local' / '$PROMPT_COLOR' /" >> ~/.bash_profile
+	fi
 fi

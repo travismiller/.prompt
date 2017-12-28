@@ -28,7 +28,9 @@ if [ -n "$BASH_VERSION" ]; then
         "dev")
             PROMPT_PS1_HOST_COLOR=$COLOR_IPURPLE
         ;;
-        # "local")
+        "local")
+            PROMPT_PS1_HOST_COLOR=$COLOR_ICYAN
+        ;;
         *)
             PROMPT_PS1_HOST_COLOR=$COLOR_ICYAN
         ;;
@@ -37,11 +39,11 @@ if [ -n "$BASH_VERSION" ]; then
     PROMPT_PS1_USER_COLOR=$PROMPT_PS1_HOST_COLOR
     PROMPT_PS1_PROMPT_COLOR=$COLOR_IBLUE
     PROMPT_PS1_PROMPT_CHARACTER='$'
-    # if [ `whoami` = "root" ]; then
-    #     PROMPT_PS1_USER_COLOR=$COLOR_RED
-    #     PROMPT_PS1_PROMPT_COLOR=$COLOR_RED
-    #     PROMPT_PS1_PROMPT_CHARACTER='#'
-    # fi
+    if [ `whoami` = "root" ]; then
+        PROMPT_PS1_USER_COLOR=$COLOR_RED
+        PROMPT_PS1_PROMPT_COLOR=$COLOR_RED
+        PROMPT_PS1_PROMPT_CHARACTER='#'
+    fi
 
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
@@ -60,7 +62,7 @@ if [ -n "$BASH_VERSION" ]; then
     {
       local git_user="$(__user)"
 
-      if [ -n "$git_user" ]; then
+      if [ -n "$git_user" ] && [ "$DOT_PROMPT_TYPE" = 'local' ]; then
         echo "$git_user"
       else
         echo "$(whoami)"
@@ -71,7 +73,9 @@ if [ -n "$BASH_VERSION" ]; then
     {
       local git_user="$(__user)"
 
-      if [ -z "$git_user" ]; then
+      if [ -n "$git_user" ] && [ "$DOT_PROMPT_TYPE" = 'local' ]; then
+        echo ""
+      else
         echo "@$(hostname -s)"
       fi
     }

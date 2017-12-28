@@ -97,7 +97,7 @@ if [ -n "$BASH_VERSION" ]; then
     }
 
     # https://unix.stackexchange.com/a/275016
-    PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
+    PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'";$PROMPT_COMMAND"
     export PS1=$(colored_prompt)
 
 fi

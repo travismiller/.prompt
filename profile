@@ -50,11 +50,15 @@ if [ -n "$BASH_VERSION" ]; then
     GIT_PS1_DESCRIBE_STYLE=
     GIT_PS1_SHOWCOLORHINTS=
 
-    __git_ps1_user ()
+    __user ()
     {
       local git_user_config="$(git config user.email)"
-      local git_user_env="$GIT_AUTHOR_EMAIL"
-      local git_user="${git_user_env:-git_user_config}"
+      echo "${GIT_AUTHOR_EMAIL:-$git_user_config}"
+    }
+
+    __git_ps1_user ()
+    {
+      local git_user="$(__user)"
 
       if [ -n "$git_user" ]; then
         echo "$git_user"
@@ -65,7 +69,9 @@ if [ -n "$BASH_VERSION" ]; then
 
     __git_ps1_host ()
     {
-      if [ ! -n "$GIT_AUTHOR_EMAIL" ]; then
+      local git_user="$(__user)"
+
+      if [ -z "$git_user" ]; then
         echo "@$(hostname -s)"
       fi
     }
@@ -79,12 +85,15 @@ if [ -n "$BASH_VERSION" ]; then
         local user="$PROMPT_PS1_USER_COLOR"'$(__git_ps1_user)'
         local host="$PROMPT_PS1_HOST_COLOR"'$(__git_ps1_host)'
 
-        local location="$COLOR_IBLUE\w"
+        # local location="$COLOR_IBLUE\w"
+        local location="$COLOR_IBLUE\$PS1_PATH"
         local branch="$COLOR_YELLOW$gitps1"
         local prompt="$PROMPT_PS1_PROMPT_COLOR$PROMPT_PS1_PROMPT_CHARACTER"
         echo "$COLOR_OFF$user$host $location$branch\n$prompt$COLOR_OFF "
     }
 
+    # https://unix.stackexchange.com/a/275016
+    PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
     export PS1=$(colored_prompt)
 
 fi

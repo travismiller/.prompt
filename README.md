@@ -23,3 +23,8 @@ Add the following to .profile or .bash_profile
 # colored prompt w/ git support
 source ~/.prompt/profile 'local' 2> /dev/null
 ```
+
+Screenshot
+----------
+
+![.prompt Screenshot](/screenshot.png?raw=true ".prompt Screenshot")

@@ -14,10 +14,10 @@ Manual Setup
 Place this .prompt directory into your home directory.
 
 ```console
-$ git clone https://github.com/puckbag/.prompt.git ~/.prompt
+$ git clone https://github.com/travismiller/.prompt.git ~/.prompt
 ```
 
-Add the following to .profile or .bash_profile
+Add the following to `~/.bash_profile`
 
 ```bash
 # colored prompt w/ git support

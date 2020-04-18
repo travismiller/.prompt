@@ -1,6 +1,8 @@
 .prompt
 =======
 
+⚠️ NOTE: I use [Oh My ZSH](https://ohmyz.sh/) with the [powerline10k](https://github.com/romkatv/powerlevel10k) theme. ⚠️
+
 This setup assumes BASH and GIT. You can set the $PROMPT_TYPE variable to
 pre-determined colors.
 
